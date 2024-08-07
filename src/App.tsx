@@ -59,6 +59,9 @@ export default function App() {
         return;
       }
 
+      if (result.split(".")[1] === "00") {
+        result = result.split(".")[0];
+      }
       setValue(result);
     } catch (error: any) {
       setValue("Error");
