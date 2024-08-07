@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Theme 1 */
+
+.theme1 {
+  /* Backgrounds */
+  --main-background: hsl(222, 26%, 31%);
+  --toggle-background-keypad-background: hsl(223, 31%, 20%);
+  --screen-background: hsl(224, 36%, 15%);
+
+  /* Keys */
+  --primary-key-background: hsl(225, 21%, 49%);
+  --primary-key-shadow: hsl(224, 28%, 35%);
+  --primary-key-background-hover: hsl(224, 33%, 69%);
+
+  --secondary-key-background-toggle: hsl(6, 63%, 50%);
+  --secondary-key-shadow: hsl(6, 70%, 34%);
+  --secondary-key-background-hover: hsl(6, 76%, 64%);
+
+  --tertiary-key-background: hsl(30, 25%, 89%);
+  --tertiary-key-shadow: hsl(28, 16%, 65%);
+  --tertiary-key-background-hover: hsl(0, 0%, 100%);
+
+  /* Text */
+  --text-main: hsl(221, 14%, 31%);
+  --text-white: hsl(0, 0%, 100%);
+}
