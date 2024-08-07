@@ -6,20 +6,41 @@ import Key from "./components/Key";
 export default function App() {
   const [value, setValue] = useState<string>("0");
 
+  // Add a value to the input
   const setV = (v: string) => {
-    if (v === "." && value.includes(".")) return;
+    if (value === "Error") {
+      setValue(v);
+      return;
+    }
+
+    // Check if the value already has a dot on the last number
+    let lastNumber = value.split(/[\+\-\*\/]/).pop();
+    if (lastNumber && lastNumber.includes(".") && v === ".") return;
+
+    // If the value is 0, replace it with the new value, else append the new value
     if (value !== "0") setValue((old) => old + v);
     else setValue(v);
   };
 
   const deleteValue = () => {
+    if (value === "Error") {
+      setValue("0");
+      return;
+    }
+
+    // If the value.length is 1, replace it with 0, else remove the last character
     if (value.length === 1) setValue("0");
     else setValue(value.slice(0, -1));
   };
 
   const addOperator = (v: string) => {
-    // if last character is operator or ., replace it
+    if (value === "Error") {
+      setValue("0");
+      return;
+    }
+
     const ops = ["+", "-", "*", "/"];
+
     if (
       ops.includes(value[value.length - 1]) ||
       value[value.length - 1] === "."
@@ -32,9 +53,15 @@ export default function App() {
 
   const calculate = () => {
     try {
-      setValue(eval(value).toFixed(2).toString());
-    } catch {
-      setValue("ERROR");
+      let result = eval(value).toFixed(2).toString();
+      if (result === "Infinity" || result === "NaN") {
+        setValue("Error");
+        return;
+      }
+
+      setValue(result);
+    } catch (error: any) {
+      setValue("Error");
     }
   };
 
@@ -125,11 +152,11 @@ export default function App() {
   ];
 
   return (
-    <div className="theme1 bg-mainBackground flex min-h-screen w-full items-center justify-center px-4">
-      <main className="flex flex-col">
+    <div className="theme1 flex min-h-screen w-full items-center justify-center bg-mainBackground px-4">
+      <main className="flex w-full flex-col">
         <Header />
         <Input value={value} />
-        <section className="bg-toggleBackgroundKeypadBackground mt-4 grid grid-cols-4 gap-4 rounded-md p-4">
+        <section className="mt-4 grid w-full grid-cols-4 gap-4 rounded-md bg-toggleBackgroundKeypadBackground p-4">
           {keys.map((key, index) => (
             <Key key={index} {...key} />
           ))}

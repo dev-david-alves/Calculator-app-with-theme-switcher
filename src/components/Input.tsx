@@ -1,10 +1,11 @@
 const Input = ({ value }: { value: string }) => {
   return (
-    <input
-      value={value.replace(".", ",")}
-      disabled
-      className="bg-screenBackground w-full rounded-md px-4 py-6 text-right text-4xl text-white"
-    />
+    <div className="w-full min-w-full rounded-md bg-screenBackground px-4 py-6">
+      {/* Replace all dots with commas */}
+      <p className="text-right text-4xl text-white">
+        {value.replace(/\./g, ",")}
+      </p>
+    </div>
   );
 };
 
