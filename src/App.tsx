@@ -1,75 +1,110 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import Input from "./components/Input";
 import Key from "./components/Key";
 
 export default function App() {
+  const [value, setValue] = useState<string>("0");
+
+  const setV = (v: string) => {
+    if (v === "." && value.includes(".")) return;
+    if (value !== "0") setValue((old) => old + v);
+    else setValue(v);
+  };
+
+  const deleteValue = () => {
+    if (value.length === 1) setValue("0");
+    else setValue(value.slice(0, -1));
+  };
+
+  const addOperator = (v: string) => {
+    // if last character is operator or ., replace it
+    const ops = ["+", "-", "*", "/"];
+    if (
+      ops.includes(value[value.length - 1]) ||
+      value[value.length - 1] === "."
+    ) {
+      setValue(value.slice(0, -1) + v);
+    } else {
+      setValue(value + v);
+    }
+  };
+
+  const calculate = () => {
+    try {
+      setValue(eval(value).toFixed(2).toString());
+    } catch {
+      setValue("ERROR");
+    }
+  };
+
   const keys = [
     {
       value: "7",
-      onClick: () => console.log("7"),
+      onClick: () => setV("7"),
     },
     {
       value: "8",
-      onClick: () => console.log("8"),
+      onClick: () => setV("8"),
     },
     {
       value: "9",
-      onClick: () => console.log("9"),
+      onClick: () => setV("9"),
     },
     {
       value: "DEL",
       bgColor:
         "bg-primaryKeyBackground hover:bg-[var(--primary-key-background-hover)]",
       shadowColor: "shadow-primaryKeyShadow",
-      onClick: () => console.log("DEL"),
+      onClick: () => deleteValue(),
     },
     {
       value: "4",
-      onClick: () => console.log("4"),
+      onClick: () => setV("4"),
     },
     {
       value: "5",
-      onClick: () => console.log("5"),
+      onClick: () => setV("5"),
     },
     {
       value: "6",
-      onClick: () => console.log("6"),
+      onClick: () => setV("6"),
     },
     {
       value: "+",
-      onClick: () => console.log("+"),
+      onClick: () => addOperator("+"),
     },
     {
       value: "1",
-      onClick: () => console.log("1"),
+      onClick: () => setV("1"),
     },
     {
       value: "2",
-      onClick: () => console.log("2"),
+      onClick: () => setV("2"),
     },
     {
       value: "3",
-      onClick: () => console.log("3"),
+      onClick: () => setV("3"),
     },
     {
       value: "-",
-      onClick: () => console.log("-"),
+      onClick: () => addOperator("-"),
     },
     {
       value: ".",
-      onClick: () => console.log("."),
+      onClick: () => setV("."),
     },
     {
       value: "0",
-      onClick: () => console.log("0"),
+      onClick: () => setV("0"),
     },
     {
       value: "/",
-      onClick: () => console.log("/"),
+      onClick: () => addOperator("/"),
     },
     {
       value: "x",
-      onClick: () => console.log("x"),
+      onClick: () => addOperator("*"),
     },
     {
       value: "RESET",
@@ -77,7 +112,7 @@ export default function App() {
         "bg-primaryKeyBackground hover:bg-[var(--primary-key-background-hover)]",
       shadowColor: "shadow-primaryKeyShadow",
       colSpan: "col-span-2",
-      onClick: () => console.log("="),
+      onClick: () => setValue("0"),
     },
     {
       value: "=",
@@ -85,7 +120,7 @@ export default function App() {
         "bg-secondaryKeyBackground hover:bg-[var(--secondary-key-background-hover)]",
       shadowColor: "shadow-secondaryKeyShadow",
       colSpan: "col-span-2",
-      onClick: () => console.log("="),
+      onClick: () => calculate(),
     },
   ];
 
@@ -93,7 +128,7 @@ export default function App() {
     <div className="theme1 bg-mainBackground flex min-h-screen w-full items-center justify-center px-4">
       <main className="flex flex-col">
         <Header />
-        <Input value={"399,981"} />
+        <Input value={value} />
         <section className="bg-toggleBackgroundKeypadBackground mt-4 grid grid-cols-4 gap-4 rounded-md p-4">
           {keys.map((key, index) => (
             <Key key={index} {...key} />

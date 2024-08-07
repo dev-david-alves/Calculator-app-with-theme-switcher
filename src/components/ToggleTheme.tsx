@@ -3,7 +3,7 @@ function ToggleTheme() {
     <div className="flex items-end gap-4">
       <span className="pb-1 text-[10px] uppercase text-white">Theme</span>
       <div className="flex flex-col items-center justify-center">
-        <div className="flex items-center gap-2 text-sm font-normal text-white">
+        <div className="flex w-full items-center justify-between px-2 text-[9px] text-sm text-white">
           <span>1</span>
           <span>2</span>
           <span>3</span>
