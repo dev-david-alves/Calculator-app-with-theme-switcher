@@ -2,9 +2,13 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Input from "./components/Input";
 import Key from "./components/Key";
+import { cn } from "./utils/cn";
+
+export type TTheme = "dark" | "light" | "purplet";
 
 export default function App() {
   const [value, setValue] = useState<string>("0");
+  const [theme, setTheme] = useState<TTheme>("dark");
 
   // Add a value to the input
   const setV = (v: string) => {
@@ -155,9 +159,14 @@ export default function App() {
   ];
 
   return (
-    <div className="theme1 flex min-h-screen w-full items-center justify-center bg-mainBackground px-4">
-      <main className="flex w-full flex-col">
-        <Header />
+    <div
+      className={cn(
+        "flex min-h-screen w-full items-center justify-center bg-mainBackground px-4",
+        theme,
+      )}
+    >
+      <main className="flex w-full max-w-96 flex-col">
+        <Header theme={theme} setTheme={setTheme} />
         <Input value={value} />
         <section className="mt-4 grid w-full grid-cols-4 gap-4 rounded-md bg-toggleBackgroundKeypadBackground p-4">
           {keys.map((key, index) => (

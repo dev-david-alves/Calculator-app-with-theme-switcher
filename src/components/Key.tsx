@@ -13,7 +13,7 @@ function Key({ value, bgColor, shadowColor, colSpan, onClick }: KeyProps) {
     <button
       onClick={onClick}
       className={cn(
-        "text-main w-full rounded-md py-2 text-center text-xl shadow-[0px_3px_0px_rgba(221,_221,_221,_1)] transition-colors",
+        "w-full rounded-md py-2 text-center text-xl text-main shadow-[0px_3px_0px_rgba(221,_221,_221,_1)] transition-colors",
         colSpan ? `${colSpan}` : "col-span-1",
         bgColor
           ? `${bgColor} text-white`

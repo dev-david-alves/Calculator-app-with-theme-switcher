@@ -22,6 +22,7 @@ export default {
       // Text
       main: "var(--text-main)",
       white: "var(--text-white)",
+      header: "var(--text-header)",
     },
     extend: {},
   },

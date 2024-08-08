@@ -13,8 +13,7 @@ body {
 }
 
 /* Theme 1 */
-
-.theme1 {
+.dark {
   /* Backgrounds */
   --main-background: hsl(222, 26%, 31%);
   --toggle-background-keypad-background: hsl(223, 31%, 20%);
@@ -36,4 +35,57 @@ body {
   /* Text */
   --text-main: hsl(221, 14%, 31%);
   --text-white: hsl(0, 0%, 100%);
+  --text-header: hsl(0, 0%, 100%);
+}
+
+/* Theme 2 */
+.light {
+  /* Backgrounds */
+  --main-background: hsl(0, 0%, 90%);
+  --toggle-background-keypad-background: hsl(0, 5%, 81%);
+  --screen-background: hsl(0, 0%, 93%);
+
+  /* Keys */
+  --primary-key-background: hsl(185, 42%, 37%);
+  --primary-key-shadow: hsl(185, 58%, 25%);
+  --primary-key-background-hover: hsl(185, 42%, 50%);
+
+  --secondary-key-background-toggle: hsl(25, 98%, 40%);
+  --secondary-key-shadow: hsl(25, 99%, 27%);
+  --secondary-key-background-hover: hsl(25, 98%, 60%);
+
+  --tertiary-key-background: hsl(45, 7%, 89%);
+  --tertiary-key-shadow: hsl(35, 11%, 61%);
+  --tertiary-key-background-hover: hsl(0, 0%, 95%);
+
+  /* Text */
+  --text-main: hsl(60, 10%, 19%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-header: hsl(60, 10%, 19%);
+}
+
+/* Theme 3 */
+.purplet {
+  /* Backgrounds */
+  --main-background: hsl(268, 75%, 9%);
+  --toggle-background-keypad-background: hsl(268, 71%, 12%);
+  --screen-background: hsl(268, 71%, 12%);
+
+  /* Keys */
+  --primary-key-background: hsl(281, 89%, 26%);
+  --primary-key-shadow: hsl(285, 91%, 52%);
+  --primary-key-background-hover: hsl(281, 89%, 40%);
+
+  --secondary-key-background-toggle: hsl(176, 100%, 44%);
+  --secondary-key-shadow: hsl(177, 92%, 70%);
+  --secondary-key-background-hover: hsl(176, 100%, 60%);
+
+  --tertiary-key-background: hsl(268, 47%, 21%);
+  --tertiary-key-shadow: hsl(290, 70%, 36%);
+  --tertiary-key-background-hover: hsl(268, 47%, 40%);
+
+  /* Text */
+  --text-main: hsl(52, 100%, 62%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-header: hsl(52, 100%, 62%);
 }
