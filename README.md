@@ -30,4 +30,4 @@ You can access the hosted version of this website [here](https://dev-david-alves
 
 ### Mobile Dark Mode
 
-<img src="/public/screenshots/mobile-dark.png" alt="Mobile Dark Mode" style="height: auto; width:400px;"/>
+<img src="/public/screenshots/mobile-dark.png" alt="Mobile Dark Mode" style="height: auto; width:300px;"/>
